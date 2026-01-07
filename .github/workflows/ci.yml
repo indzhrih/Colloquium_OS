@@ -1,10 +1,9 @@
 name: CI
 
 on:
-  push:
   pull_request:
     branches:
-      - kollokvium_2
+      - main
   workflow_dispatch:
 
 jobs:
