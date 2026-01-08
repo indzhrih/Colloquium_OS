@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h2 class="mb-0">Task Details</h2>
+      <div>
+        <%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-warning btn-sm' %>
+        <%= link_to 'Back', tasks_path, class: 'btn btn-secondary btn-sm' %>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-sm-3 fw-bold">Title:</div>
+        <div class="col-sm-9"><%= @task.title %></div>
+      </div>
+
+      <div class="row mb-1">
+        <div class="col-sm-3 fw-bold">Description:</div>
+        <div class="col-sm-9"><%= simple_format(@task.description) %></div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-3 fw-bold">Status:</div>
+        <div class="col-sm-9">
+          <span class="badge bg-<%= status_badge_color(@task.status) %>">
+            <%= @task.status.humanize %>
+          </span>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-3 fw-bold">Created:</div>
+        <div class="col-sm-9"><%= @task.created_at.strftime('%B %d, %Y %H:%M') %></div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-3 fw-bold">Updated:</div>
+        <div class="col-sm-9"><%= @task.updated_at.strftime('%B %d, %Y %H:%M') %></div>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <%= button_to 'Delete', @task,
+                  method: :delete,
+                  class: 'btn btn-danger' %>
+    </div>
+  </div>
+</div>

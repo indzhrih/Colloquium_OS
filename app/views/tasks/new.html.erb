@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="mb-0">New Task</h2>
+        </div>
+
+        <div class="card-body">
+          <%= render 'tasks/partials/form', task: @task %>
+        </div>
+
+        <div class="card-footer">
+          <%= link_to 'Cancel', tasks_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
