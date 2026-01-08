@@ -18,7 +18,7 @@ require 'database_cleaner/active_record'
 require 'active_storage_validations/matchers'
 # Add additional requires below this line. Rails is not loaded until this point!
 
-Capybara.default_driver = :selenium
+Capybara.default_driver = :rack_test
 Webdrivers::Geckodriver.update
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

@@ -43,9 +43,7 @@ RSpec.describe 'devise/sessions/new.html.erb', type: :feature do
     it { expect(page).to have_current_path(root_path) }
 
     it 'sets remember_user_token cookie' do
-      cookies = page.driver.browser.manage.all_cookies
-      remember_cookie = cookies.find { |cookie| cookie[:name] == 'remember_user_token' }
-      expect(remember_cookie).to be_present
+      expect(page.driver.browser.rack_mock_session.cookie_jar['remember_user_token']).to be_present
     end
   end
 end
