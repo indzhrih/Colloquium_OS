@@ -1,0 +1,22 @@
+<div class="dropdown user-dropdown">
+  <button class="btn btn-light dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="me-2"><%= current_user.nickname %></span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end shadow">
+    <div class="d-flex">
+      <%= image_tag user_avatar(user: current_user, variant: :small),
+                    class: "rounded-circle ms-3 object-fit-cover",
+                    width: "40",
+                    height: "40",
+                    alt: current_user.avatar.attached? ? "#{current_user.nickname}_avatar" : "default_avatar" %>
+      <h3 class="dropdown-header fs-5 fw-bold text-dark">Hello <%= current_user.nickname %>!</h3>
+    </div>
+    <hr class="dropdown-divider">
+    <%= link_to 'Settings', edit_user_registration_path, class: "dropdown-item py-2"%>
+    <%= button_to "Log out",
+                  destroy_user_session_path,
+                  method: :delete,
+                  class: "dropdown-item py-2 text-danger",
+                  form: { class: "d-inline" } %>
+  </ul>
+</div>

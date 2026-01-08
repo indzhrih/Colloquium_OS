@@ -15,6 +15,7 @@ require 'capybara/rails'
 require 'capybara/dsl'
 require 'webdrivers/geckodriver'
 require 'database_cleaner/active_record'
+require 'active_storage_validations/matchers'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 Capybara.default_driver = :selenium
@@ -55,6 +56,12 @@ RSpec.configure do |config|
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
   ]
+
+  config.include Warden::Test::Helpers
+  config.include FactoryBot::Syntax::Methods
+  config.include ActiveStorageValidations::Matchers
+
+  config.include Devise::Test::ControllerHelpers, type: :view
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

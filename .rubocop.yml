@@ -53,3 +53,12 @@ Rails/HasManyOrHasOneDependent:
 
 Rails/InverseOf:
   Enabled: false
+
+Lint/UselessConstantScoping:
+  Enabled: false
+
+Lint/UselessAccessModifier:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
