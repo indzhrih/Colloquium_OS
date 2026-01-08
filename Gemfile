@@ -43,6 +43,9 @@ gem 'active_storage_validations'
 # A ruby wrapper for ImageMagick command line.
 gem 'mini_magick'
 
+# Flexible authentication solution for Rails based on Warden [https://github.com/heartcombo/devise]
+gem 'devise'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

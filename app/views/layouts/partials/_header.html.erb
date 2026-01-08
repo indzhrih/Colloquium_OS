@@ -1,5 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-dark">
   <div class="container">
-    <h1 class="navbar-brand text-white fs-4 fw-bold">Tasks</h1>
+    <h1 class="navbar-brand text-white fs-4 fw-bold"><%= link_to 'Tasks', root_path, class: "text-white text-decoration-none" %></h1>
+    <div class="d-flex justify-content-end">
+      <% if current_user %>
+        <%= render partial: 'layouts/partials/user_dropdown' %>
+      <% else %>
+        <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-success me-2" %>
+        <%= link_to 'Log in', new_user_session_path, class: "btn btn-primary me-2" %>
+      <% end %>
+    </div>
   </div>
 </nav>

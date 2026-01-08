@@ -15,9 +15,10 @@ require 'capybara/rails'
 require 'capybara/dsl'
 require 'webdrivers/geckodriver'
 require 'database_cleaner/active_record'
+require 'active_storage_validations/matchers'
 # Add additional requires below this line. Rails is not loaded until this point!
 
-Capybara.default_driver = :selenium
+Capybara.default_driver = :rack_test
 Webdrivers::Geckodriver.update
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -56,6 +57,12 @@ RSpec.configure do |config|
     Rails.root.join('spec/fixtures')
   ]
 
+  config.include Warden::Test::Helpers
+  config.include FactoryBot::Syntax::Methods
+  config.include ActiveStorageValidations::Matchers
+
+  config.include Devise::Test::ControllerHelpers, type: :view
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
@@ -83,21 +90,6 @@ RSpec.configure do |config|
 
   config.append_after do
     DatabaseCleaner.clean
-  end
-
-  SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
-  SimpleCov.start 'rails' do
-    enable_coverage_for_eval
-    add_group 'Views', 'app/views'
-    add_filter(%r{^/spec/})
-    add_filter('/app/channels/')
-    add_filter('/app/jobs/')
-    add_filter('/app/mailers/')
-    add_filter('application_record.rb')
-    add_filter('application_job.rb')
-    add_filter('application_mailer.rb')
-    add_filter('application_cable/')
-    enable_coverage(:branch)
   end
 
   config.include Capybara::DSL

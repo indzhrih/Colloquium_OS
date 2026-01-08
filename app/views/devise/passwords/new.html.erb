@@ -1,0 +1,18 @@
+<div class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
+  <div class="card shadow-lg border-0 p-4">
+    <h2 class="text-center fw-bold mb-4"><%= t("devise.passwords.new.forgot_password") %></h2>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-floating mb-3">
+        <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+        <%= f.label :email, t("devise.passwords.new.e-mail") %>
+      </div>
+
+      <div class="d-grid gap-3">
+        <%= f.submit t("devise.passwords.new.send_instructions"), class: "btn btn-primary btn-lg py-3 text-wrap" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="mb-3">
+  <%= form.send(data[:field_type],
+                data[:field_name],
+                class: "form-control",
+                autocomplete: data[:autocomplete]) %>
+  <%= form.label t(data[:field_name]), t(data[:field_text]) if data[:field_type] != :file_field %>
+</div>

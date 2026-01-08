@@ -1,0 +1,28 @@
+<div class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
+  <div class="card shadow-lg border-0 p-4">
+    <h3 class="text-center fw-bold mb-4"><%= t("devise.sessions.new.log_in") %></h3>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "needs-validation" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <%= render partial: "devise/shared/field",
+                 collection: session_new_data, as: :data,
+                 locals: { form: f } %>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="form-check mb-3">
+          <%= f.label :remember_me, t("devise.sessions.new.remember_me"),class: "form-check-label" %>
+          <%= f.check_box :remember_me, class: "form-check-input" %>
+        </div>
+      <% end %>
+
+      <div class="d-grid gap-2 mb-3">
+        <%= f.submit t("devise.sessions.new.log_in"), class: "btn btn-primary btn-lg" %>
+      </div>
+
+      <div class="text-center small mb-3">
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
+  </div>
+</div>
