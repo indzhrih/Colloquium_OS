@@ -37,6 +37,6 @@ module Kollokvium2
     # Skip views, helpers and assets when generating a new resource.
     config.sass.quiet_deps = true
 
-    config.api_only = true
+    #config.api_only = true
   end
 end
