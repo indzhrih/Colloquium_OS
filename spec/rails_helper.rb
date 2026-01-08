@@ -62,6 +62,8 @@ RSpec.configure do |config|
   config.include ActiveStorageValidations::Matchers
 
   config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
