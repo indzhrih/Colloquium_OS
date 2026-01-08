@@ -110,7 +110,7 @@ RSpec.describe 'devise/registrations/edit.html.erb', type: :feature do
 
     it {
       expect(page).to have_content(I18n.t('errors.messages.confirmation', resource: 'Password confirmation',
-                                          attribute: 'Password'))
+                                                                          attribute: 'Password'))
     }
   end
 
